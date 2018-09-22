@@ -1,4 +1,4 @@
-# Apollo Client Client State with React Starter Project
+# Apollo Client State with React Starter Project
 
 This project is for used with the Mastering Apollo Series on WintellectNOW [http://www.wintellectnow.com](http://www.wintelltectnow.com)
 

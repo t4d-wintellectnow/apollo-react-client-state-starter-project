@@ -61,3 +61,15 @@ WidgetTable.propTypes = {
   onAddSelectedWidgetId: PropTypes.func.isRequired,
   onRemoveSelectedWidgetId: PropTypes.func.isRequired,
 };
+
+WidgetTable.defaultProps = {
+  widgets: [],
+  editWidgetId: -1,
+  selectedWidgetIds: [],
+  onAddSelectedWidgetId: () => {},
+  onRemoveSelectedWidgetId: () => {},
+  onDeleteSelectedWidgets: () => {},
+  onEditWidget: () => {},
+  onCancelWidget: () => {},
+  onSaveWidget: () => {},
+};

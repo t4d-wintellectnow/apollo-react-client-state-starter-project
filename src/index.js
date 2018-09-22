@@ -13,14 +13,16 @@ import { getMainDefinition } from 'apollo-utilities';
 
 import './index.css';
 
+const GRAPHQL_PORT = process.env.REACT_APP_GRAPHQL_PORT || 3010;
+
 const cache = new InMemoryCache();
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:3030/graphql',
+  uri: `http://localhost:${GRAPHQL_PORT}/graphql`,
 });
 
 const webSocketLink = new WebSocketLink({
-  uri: 'ws://localhost:3030/graphql',
+  uri: `ws://localhost:${GRAPHQL_PORT}/graphql`,
 });
 
 const link = split(

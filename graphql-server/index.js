@@ -3,11 +3,12 @@ import { ApolloServer } from 'apollo-server';
 import { typeDefs } from './schema';
 import { resolvers } from './resolvers';
 
-const PORT = 3030;
-const REST_SERVER_URL = 'http://localhost:3040';
+const GRAPHQL_PORT = process.env.PORT || 3010;
+const REST_PORT = process.env.REST_PORT || 3020;
+const REST_SERVER_URL = `http://localhost:${REST_PORT}`;
 
 const context = {
-    restURL: REST_SERVER_URL,
+  restURL: REST_SERVER_URL,
 };
 
 const server = new ApolloServer({
@@ -17,7 +18,7 @@ const server = new ApolloServer({
 });
 
 server.listen({
-  port: PORT,
+  port: GRAPHQL_PORT,
 }).then( ({ url }) => {
   console.log(`graphql server url: ${url}`);
 } );
