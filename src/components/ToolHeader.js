@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './ToolHeader.scss';
+import './ToolHeader.css';
 
 export const ToolHeader = ({ headerText }) =>
   <header className='toolHeader'>

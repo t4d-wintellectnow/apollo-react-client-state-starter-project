@@ -11,7 +11,7 @@ import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 
-import './index.scss';
+import './index.css';
 
 const GRAPHQL_PORT = process.env.REACT_APP_GRAPHQL_PORT || 3010;
 
