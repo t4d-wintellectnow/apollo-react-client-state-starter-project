@@ -64,7 +64,7 @@ WidgetTable.propTypes = {
 
 WidgetTable.defaultProps = {
   widgets: [],
-  editWidgetId: -1,
+  editWidgetId: '-1',
   selectedWidgetIds: [],
   onAddSelectedWidgetId: () => {},
   onRemoveSelectedWidgetId: () => {},
