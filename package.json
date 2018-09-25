@@ -28,8 +28,8 @@
   },
   "config": {
     "CLIENT_PORT": 3000,
-    "GRAPHQL_PORT": 3010,
-    "REST_PORT": 3020
+    "GRAPHQL_PORT": 3030,
+    "REST_PORT": 3040
   },
   "scripts": {
     "start-client-cygwin": "cross-env SHELL=bash run-s start-client",
