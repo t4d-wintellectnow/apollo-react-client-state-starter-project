@@ -6,7 +6,9 @@ export const typeDefs = `
 
   type Mutation {
     insertWidget(widget: InsertWidget): Widget
+    replaceWidget(widget: ReplaceWidget): Widget
     deleteWidget(widgetId: ID): Widget
+    deleteWidgets(widgetIds: [ID]): [Widget]
   }
 
   type Subscription {
@@ -32,4 +34,14 @@ export const typeDefs = `
     price: Float
     quantity: Int
   }
+
+  input ReplaceWidget {
+    id: ID
+    name: String
+    description: String
+    color: String
+    size: String
+    price: Float
+    quantity: Int
+  }  
 `;

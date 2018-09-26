@@ -21,9 +21,19 @@ export const resolvers = {
       })
         .then(res => res.json())
         .then(widget => {
-          pubsub.publish(WIDGET_INSERTED, { widgetInserted: widget })
+          pubsub.publish(WIDGET_INSERTED, { widgetInserted: widget });
           return widget;
         }),
+    replaceWidget: (_, { widget }, { restURL }) =>
+      fetch(`${restURL}/widgets/${encodeURIComponent(widget.id)}`)
+        .then(res => res.json())
+        .then(oldWidget =>
+          fetch(`${restURL}/widgets/${encodeURIComponent(widget.id)}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(widget)
+          })
+            .then(() => oldWidget)),
     deleteWidget: (_, { widgetId }, { restURL }) =>
       fetch(`${restURL}/widgets/${encodeURIComponent(widgetId)}`)
         .then(res => res.json())
@@ -35,6 +45,21 @@ export const resolvers = {
           pubsub.publish(WIDGET_DELETED, { widgetDeleted: widget });
           return widget;
         }),
+    deleteWidgets: (_, { widgetIds }, { restURL }) =>
+      Promise.all(
+        widgetIds.map(widgetId =>
+          fetch(`${restURL}/widgets/${encodeURIComponent(widgetId)}`)
+            .then(res => res.json())
+            .then(widget => {
+              return fetch(`${restURL}/widgets/${encodeURIComponent(widgetId)}`, { method: 'DELETE' })
+                .then(() => widget);
+            })
+            .then(widget => {
+              pubsub.publish(WIDGET_DELETED, { widgetDeleted: widget });
+              return widget;
+            })
+        )
+      ),
   },
   Subscription: {
     widgetInserted: {
