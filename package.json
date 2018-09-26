@@ -52,7 +52,7 @@
     "build-graphql-server": "babel graphql-server -d graphql-server-dist",
     "inspect-graphql-server": "node --inspect-brk ./graphql-server-dist/index",
     "start-graphql-server:debug-exec": "run-s build-graphql-server inspect-graphql-server",
-    "start-rest-server-exec": "cross-env-shell json-server --port=$PORT --watch db.json --static node_modules/json-server/dist",
+    "start-rest-server-exec": "cross-env-shell json-server --port=$PORT --static node_modules/json-server/dist db.json",
     "test": "react-scripts test --env=jsdom",
     "test:debug": "react-scripts --inspect-brk test --runInBand --env=jsdom"
   },
